@@ -1,8 +1,13 @@
+import React from "react";
 import styles from "./ContactForm.module.css";
 
 const ContactForm = () => {
-  return <div className={styles.container}></div>;
-  <div></div>;
+  return (
+    <section className={styles.container}>
+      <div className={styles.contact_form}></div>
+      <div className={styles.contact_image}></div>
+    </section>
+  );
 };
 
 export default ContactForm;
