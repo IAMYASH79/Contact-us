@@ -2,8 +2,20 @@ import Button from "../Button/Button";
 import styles from "./ContactForm.module.css";
 import { MdMessage } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
+import { useState } from "react";
 
 const ContactForm = () => {
+  const [name, setName] = useState("Rani");
+  const [email, setEmail] = useState("test@gmail.com");
+  const [text, setText] = useState("chala ja bsdk");
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    setName(event.target[0].value);
+    setEmail(event.target[1].value);
+    setText(event.target[2].value);
+  };
+
   return (
     <section className={styles.container}>
       <div className={styles.contact_form}>
@@ -17,13 +29,27 @@ const ContactForm = () => {
         icon={<FaPhoneAlt fontSize="24px" />}
       />
 
-      <form action="">
+      <form onSubmit={onSubmit}>
         <div className={styles.form_control}>
           <label htmlFor="name">Name</label>
           <input type="text" name="name" />
         </div>
+
+        <div className={styles.form_control}>
+          <label htmlFor="email">Email</label>
+          <input type="mail" name="email" />
+        </div>
+
+        <div className={styles.form_control}>
+          <label htmlFor="text">Text</label>
+          <input type="text" />
+        </div>
+        <Button text="Submit" />
+        <div>{name + "  " + email + "  " + text}</div>
       </form>
-      <div className={styles.contact_image}></div>
+      <div className={styles.contact_image}>
+        <img src="/images/Service.png" alt="" />
+      </div>
     </section>
   );
 };
